@@ -40,10 +40,7 @@ class City(object):
 
     def updateLefties(self, baseScore, minimalScore):
         for lefty in self.lefties:
-            if (
-                lefty.score > baseScore or
-                lefty.score < minimalScore
-            ):
+            if  lefty.score > baseScore:
                 lefty.score = (baseScore + minimalScore) / 2
                 lefty.updateLefties(lefty.score, minimalScore)
 
@@ -87,10 +84,7 @@ class City(object):
 
     def updateRighties(self, baseScore, minimalScore):
         for righty in self.righties:
-            if (
-                righty.score < baseScore or
-                righty.score > minimalScore
-            ):
+            if (righty.score < baseScore):
                 righty.score = (baseScore + minimalScore) / 2
                 righty.updateRighties(righty.score, minimalScore)
 
