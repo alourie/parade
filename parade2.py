@@ -55,7 +55,7 @@ if __name__ == "__main__":
             city1, city2 = city2, city1
 
         if city2.hasAtRight(city1):
-            raise 'Incorrect format!'
+            raise RuntimeError('Incorrect format!')
         else:
             city1.addRight(city2)
 
@@ -63,8 +63,12 @@ if __name__ == "__main__":
             cities[city.name] = city
 
 
+    final = []
     for city in cities.values():
         if city.isFirst():
-            cities = city.getAll()
-            for c in cities:
-                print c
+            final.insert(0,city.name)
+            final.extend(city.getAll())
+            #print final
+
+    for city in set(final):
+        print city
