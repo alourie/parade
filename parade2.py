@@ -63,12 +63,18 @@ if __name__ == "__main__":
             cities[city.name] = city
 
 
-    final = []
-    for city in cities.values():
-        if city.isFirst():
-            final.insert(0,city.name)
-            final.extend(city.getAll())
-            #print final
+    citylist = []
+    for city in (
+        city for city in cities.values()
+        if city.isFirst() 
+    ):
+        citylist.insert(0,city.name)
+        citylist.extend(city.getAll())
 
-    for city in set(final):
-        print city
+
+    final = []
+    for city in citylist:
+        if not city in final:
+            final.append(city)
+            print city
+
